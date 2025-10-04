@@ -6,6 +6,7 @@ import { NewRideComponent } from './Components/new-ride/new-ride.component';
 import { BookRideComponent } from './Components/book-ride/book-ride.component';
 import { MaterialModule } from '../Other-Modules/material/material.module';
 import { AvailableRidesComponent } from './Components/available-rides/available-rides.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AvailableRidesComponent } from './Components/available-rides/available-
   imports: [
     CommonModule,
     TransportRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class TransportModule { }

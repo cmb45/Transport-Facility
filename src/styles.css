@@ -6,7 +6,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card{
-    height: 100vh;
+    height: 100vh !important;
+    box-shadow: none;
 }
 
 .page{
@@ -19,4 +20,14 @@ mat-card{
 .page-title{
     font-size: 20px !important;
     font-weight: 500 !important;
+}
+
+.box-card{
+    border: 1px solid #E6E6E6;
+    border-radius: 16px;
+    overflow: auto;
+}
+
+.mat-mdc-form-field-error-wrapper{
+    padding: 0 !important;
 }

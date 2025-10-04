@@ -8,14 +8,13 @@ export class TransportService {
 
   constructor() { }
 
-  public getAvailableRides(): NewRideInfo[]{
-    return [
+  private _avilableRides : NewRideInfo[] = [
       {
         employeeId : 'emp1',
         vehicleType: VehicleType.CAR,
         vehicleNumber :"KA 01 LG 1234",
         vacantSeats: 3,
-        time :'',
+        time :'12:23',
         pickUpPoint: 'BTM Layout',
         destination :'Banashankari'
       },
@@ -24,7 +23,7 @@ export class TransportService {
         vehicleType: VehicleType.BIKE,
         vehicleNumber :"KA 01 LG 5665",
         vacantSeats: 1,
-        time :'',
+        time :'01:23',
         pickUpPoint: 'BTM Layout',
         destination :'Silk Board'
       },
@@ -34,10 +33,17 @@ export class TransportService {
         vehicleType: VehicleType.CAR,
         vehicleNumber :"KA 01 LG 2475",
         vacantSeats: 2,
-        time :'',
+        time :'02:45',
         pickUpPoint: 'BTM Layout',
         destination :'HSR Layout'
       }
-    ]
+    ];
+
+  public getAvailableRides(): NewRideInfo[]{
+    return this._avilableRides;
+  }
+
+  public addNewRide(rideDetails : any){
+    this._avilableRides.push(rideDetails);
   }
 }

@@ -1,8 +1,3 @@
-.rides-table{
-    border: 1px solid #E6E6E6;
-    border-radius: 16px;
-    overflow: auto;
-}
 .rides-table-heading{
     display: flex;
     padding: 10px 0;
