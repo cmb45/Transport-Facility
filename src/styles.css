@@ -5,6 +5,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+mat-card{
+    height: 100vh;
+}
+
 .page{
     padding: 0px 15px;
 }
