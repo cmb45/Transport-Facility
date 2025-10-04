@@ -1,1 +1,77 @@
-<p>new-ride works!</p>
+<mat-card class="page">
+    <mat-card-header class="page-header">
+        <mat-card-title  class="page-title">
+                New Ride Details
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="box-card new-ride-form" [formGroup]="newRideDetailsForm" (ngSubmit)="onSubmit()">
+
+                <!--Employee Id  -->
+                <mat-form-field>
+                    <mat-label>Employee Id</mat-label>
+                    <input matInput type="text" formControlName="employeeId">
+                        <mat-error *ngIf="newRideDetailsForm.get('employeeId')?.hasError('required')">
+                            Employee Id is required
+                        </mat-error>
+                </mat-form-field>
+
+                <!-- Vehicle Number -->
+                <mat-form-field>
+                    <mat-label>Vehicle Number</mat-label>
+                    <input matInput type="text" formControlName="vehicleNumber">
+                    <mat-error *ngIf="newRideDetailsForm.get('vehicleNumber')?.hasError('required')">
+                            Vehicle Number is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Vehicle Type -->
+                <mat-form-field>
+                    <mat-label>Vehicle Type</mat-label>
+                    <mat-select formControlName="vehicleType">
+                        <mat-option value="Car">Car</mat-option>
+                        <mat-option value="Bike">Bike</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- Vehicle Seat  -->
+                <mat-form-field>
+                    <mat-label>Vehicle Seat</mat-label>
+                    <input matInput type="number" formControlName="vacantSeats">
+                </mat-form-field>
+
+                <!-- Time  -->
+                <mat-form-field>
+                    <mat-label>Time</mat-label>
+                    <input matInput type="time" formControlName="time">
+                </mat-form-field>
+
+                <!-- Pick-Up Point  -->
+                <mat-form-field>
+                    <mat-label>Pick-Up Point</mat-label>
+                    <input matInput type="text"  formControlName="pickUpPoint">
+                    <mat-error *ngIf="newRideDetailsForm.get('pickUpPoint')?.hasError('required')">
+                            Pick-Up Point is required
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Destination  -->
+                <mat-form-field>
+                    <mat-label>Destination</mat-label>
+                    <input matInput type="text"  formControlName="destination">
+                    <mat-error *ngIf="newRideDetailsForm.get('destination')?.hasError('required')">
+                            Destination is required
+                    </mat-error>
+                </mat-form-field>
+
+            <button  
+                mat-raised-button color="primary" 
+                type="submit"
+                [disabled]="!newRideDetailsForm.valid"
+                >
+                Submit
+            </button>
+        </form>
+
+    </mat-card-content>
+</mat-card>
