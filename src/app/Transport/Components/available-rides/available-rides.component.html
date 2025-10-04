@@ -1,0 +1,68 @@
+<mat-card class="page">
+    <mat-card-header class="page-header">
+        <mat-card-title class="page-title">
+                Available Rides
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="rides-table">
+        <div class="rides-table-heading border-bottom">
+            <div>
+
+            </div>
+            <div class="rides-table-actions">
+                <input matInput class="rides-table-filter" placeholder="Type here to filter">
+                <button mat-raised-button color="primary" (click)="newRide()">New Ride</button>
+            </div>
+        </div>
+
+        <table mat-table [dataSource]="dataSource">
+            <!-- Employee ID -->
+             <ng-container matColumnDef="employeeId">
+                <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+            </ng-container>
+
+            <!-- Vehicle Type -->
+            <ng-container matColumnDef="vehicleType">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Type </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicleType}} </td>
+            </ng-container>
+
+            <!-- Vehicle Number -->
+            <ng-container matColumnDef="vehicleNumber">
+                <th mat-header-cell *matHeaderCellDef> Vehicle Number </th>
+                <td mat-cell *matCellDef="let element"> {{element.vehicleNumber}} </td>
+            </ng-container>
+
+            <!-- Vacant Seats -->
+            <ng-container matColumnDef="vacantSeats">
+                <th mat-header-cell *matHeaderCellDef> Vacant Seats </th>
+                <td mat-cell *matCellDef="let element"> {{element.vacantSeats}} </td>
+            </ng-container>
+
+            <!-- Pick-Up Point -->
+            <ng-container matColumnDef="Pick-Up Point">
+                <th mat-header-cell *matHeaderCellDef> Vacant Seats </th>
+                <td mat-cell *matCellDef="let element"> {{element.pickUpPoint}} </td>
+            </ng-container>
+
+            
+            <!-- Pick-Up Point -->
+            <ng-container matColumnDef="pickUpPoint">
+                <th mat-header-cell *matHeaderCellDef> Pick-Up Point </th>
+                <td mat-cell *matCellDef="let element"> {{element.pickUpPoint}} </td>
+            </ng-container>
+
+            <!-- Destination -->
+            <ng-container matColumnDef="destination">
+                <th mat-header-cell *matHeaderCellDef> Destination </th>
+                <td mat-cell *matCellDef="let element"> {{element.destination}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+<router-outlet></router-outlet>

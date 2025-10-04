@@ -1,0 +1,27 @@
+.rides-table{
+    border: 1px solid #E6E6E6;
+    border-radius: 16px;
+    overflow: auto;
+}
+.rides-table-heading{
+    display: flex;
+    padding: 10px 0;
+}
+
+.rides-table-actions{
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.rides-table-filter{
+    min-height: 30px;
+    min-width: 200px;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #e6e6e6;
+}
