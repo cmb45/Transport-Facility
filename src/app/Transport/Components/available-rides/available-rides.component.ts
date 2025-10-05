@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { TransportService } from '../../Services/transport.service';
 import { NewRideEnum, NewRideInfo, VehicleType } from '../../Model/new-ride-model';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,13 +13,13 @@ import { BookRideComponent } from '../book-ride/book-ride.component';
   templateUrl: './available-rides.component.html',
   styleUrls: ['./available-rides.component.css']
 })
-export class AvailableRidesComponent implements OnInit{
+export class AvailableRidesComponent implements OnInit, AfterViewInit{
 
   public dataSource:any;
   public displayColumns : Array<string> = Object.values(NewRideEnum);
   public vehicleType = new FormControl('');
-  public filterSearch = new FormControl('');
-  @ViewChild('paginator', {static : true}) paginator: MatPaginator | undefined;
+  public filterSearch = new FormControl('00:00');
+  @ViewChild('paginator') paginator: MatPaginator | undefined;
   
   constructor(
     private readonly _transportService : TransportService,
@@ -27,6 +27,10 @@ export class AvailableRidesComponent implements OnInit{
     public readonly _dialog: MatDialog
   ){}
 
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 
   private _getAllAvailableRides(): NewRideInfo[] {
       return this._transportService.getAvailableRides();
@@ -50,12 +54,35 @@ export class AvailableRidesComponent implements OnInit{
   }
   
   public ngOnInit(): void {
-    const data:Array<any> = this._getAllAvailableRides();
+    const data: NewRideInfo[] = this._getAllAvailableRides();
     this.dataSource = new MatTableDataSource(data);
-    this.dataSource.paginator = this.paginator;
-    this.filterSearch.valueChanges.subscribe(value => {
-      this.dataSource.filter = value?.trim().toLowerCase() || '';
+    this.filterSearch.valueChanges.subscribe((value:any) => {
+        this._filterRidesOnTime(value);
     });
+  }
+
+  private _filterRidesOnTime(selectedTime:string):void{
+    const buffer:number = 60;
+    const tableData :  NewRideInfo[] = this._getAllAvailableRides();
+    const res:any = tableData.filter((ride:any) => {
+      let isWithinRange:boolean = true;
+
+      if (selectedTime != "00:00") {
+        const [searchHour, searchMin] = selectedTime.split(':').map(Number);
+        const searchMinutes = searchHour * 60 + searchMin;
+
+        const [rideH, rideM] = ride?.[NewRideEnum.TIME]?.split(':').map(Number);
+        const rideMinutes = rideH * 60 + rideM;
+
+        const diff:number = Math.abs(rideMinutes - searchMinutes);
+        isWithinRange = diff <= buffer;
+      }
+
+      const isVehicleMatch:boolean = this.vehicleType.value ? ride.vehicleType === this.vehicleType.value : true;
+
+      return  isVehicleMatch && isWithinRange;
+    });
+    this.dataSource.data = [...res];
   }
 
 
