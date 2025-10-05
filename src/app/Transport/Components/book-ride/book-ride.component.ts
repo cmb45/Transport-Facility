@@ -17,7 +17,7 @@ export class BookRideComponent {
   ) {}
 
   public bookRide():void{
-    this._dialogRef.close(this.bookingEmployeeId.value);
+    this._dialogRef.close(this.bookingEmployeeId.value?.trim().toLowerCase());
   }
 
   public cancel():void{
