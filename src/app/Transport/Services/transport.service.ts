@@ -16,7 +16,8 @@ export class TransportService {
         vacantSeats: 3,
         time :'12:23',
         pickUpPoint: 'BTM Layout',
-        destination :'Banashankari'
+        destination :'Banashankari',
+        bookedBy: []
       },
       {
         employeeId : 'emp2',
@@ -25,7 +26,8 @@ export class TransportService {
         vacantSeats: 1,
         time :'01:23',
         pickUpPoint: 'BTM Layout',
-        destination :'Silk Board'
+        destination :'Silk Board',
+        bookedBy: []
       },
       
       {
@@ -35,7 +37,8 @@ export class TransportService {
         vacantSeats: 2,
         time :'02:45',
         pickUpPoint: 'BTM Layout',
-        destination :'HSR Layout'
+        destination :'HSR Layout',
+        bookedBy: []
       }
     ];
 
