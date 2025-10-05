@@ -82,5 +82,9 @@ export class AvailableRidesComponent implements OnInit{
     return element?.[NewRideEnum.VEHICLE_SEAT] === 0 ? true : false;
   }
 
+  public test(){
+    console.log(this.dataSource.filteredData);
+    return true;
+  }
 
 }

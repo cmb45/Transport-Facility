@@ -25,3 +25,9 @@
 .rides-table-newRide{
     width: 200px;
 }
+
+.center{
+    display: flex;
+    justify-content: center;
+    padding: 26px 10px 10px 10px;
+}
