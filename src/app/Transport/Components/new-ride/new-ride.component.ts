@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { NewRideEnum, NewRideInfo, VehicleType } from '../../Model/new-ride-model';
 import { TransportService } from '../../Services/transport.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-ride',
@@ -13,7 +14,8 @@ export class NewRideComponent implements OnInit {
   public newRideFields =  NewRideEnum;
 
   constructor(private readonly _formBuilder: FormBuilder,
-    private readonly _transportService :TransportService
+    private readonly _transportService :TransportService,
+    private readonly _router: Router
   ){
   }
 
@@ -40,7 +42,8 @@ export class NewRideComponent implements OnInit {
     if(isEmpAlredyExists){
       alert("Employee alredy present");
     }else{
-      this._transportService.addNewRide(formDetails)
+      this._transportService.addNewRide(formDetails);
+      this._router.navigate(['rides']);
     }
   }
 
