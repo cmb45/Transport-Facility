@@ -31,3 +31,7 @@ mat-card{
 .mat-mdc-form-field-error-wrapper{
     padding: 0 !important;
 }
+
+.text-align-center{
+    text-align: center !important;
+}

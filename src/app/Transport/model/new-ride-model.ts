@@ -17,7 +17,8 @@ export enum NewRideEnum{
     VEHICLE_SEAT = 'vacantSeats',
     TIME = 'time',
     PICKUP_POINT = 'pickUpPoint',
-    DESTINATION = 'destination'
+    DESTINATION = 'destination',
+    BOOK_BY='bookedBy'
 }
 
 export enum VehicleType {
