@@ -31,6 +31,23 @@ export class AvailableRidesComponent implements OnInit{
   private _getAllAvailableRides(): NewRideInfo[] {
       return this._transportService.getAvailableRides();
   }
+
+  private _confirmRide(selectedRideDetails:any, employeeId :string){
+    const details:NewRideInfo[] = this._getAllAvailableRides().map((rideDetail:any) =>{
+        if(rideDetail?.[NewRideEnum.EMPID] === selectedRideDetails?.[NewRideEnum.EMPID]){
+          if(!rideDetail?.[NewRideEnum.BOOK_BY].includes(employeeId)){
+            rideDetail?.[NewRideEnum.BOOK_BY].push(employeeId);
+            if(rideDetail.vacantSeats){
+              rideDetail.vacantSeats = rideDetail.vacantSeats - 1;
+            }
+          }else{
+              alert("Employee alredy present");
+          }
+        };
+        return rideDetail;
+    });
+    this.dataSource = new MatTableDataSource(details)
+  }
   
   public ngOnInit(): void {
     const data:Array<any> = this._getAllAvailableRides();
@@ -60,27 +77,5 @@ export class AvailableRidesComponent implements OnInit{
       }
     })
   }
-
-  private _confirmRide(selectedRideDetails:any, employeeId :string){
-    const details:NewRideInfo[] = this._getAllAvailableRides().map((rideDetail:any) =>{
-        if(rideDetail?.[NewRideEnum.EMPID] === selectedRideDetails?.[NewRideEnum.EMPID]){
-          if(!rideDetail?.[NewRideEnum.BOOK_BY].includes(employeeId)){
-            rideDetail?.[NewRideEnum.BOOK_BY].push(employeeId);
-            if(rideDetail.vacantSeats){
-              rideDetail.vacantSeats = rideDetail.vacantSeats - 1;
-            }
-          }else{
-              alert("Employee alredy present");
-          }
-        };
-        return rideDetail;
-    });
-    this.dataSource = new MatTableDataSource(details)
-  }
-
-  public disableBookNowButton(element:any):boolean{
-    return element?.[NewRideEnum.VEHICLE_SEAT] === 0 ? true : false;
-  }
-  
 
 }
