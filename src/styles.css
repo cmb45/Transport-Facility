@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card{
+    height: 100vh !important;
+    box-shadow: none;
+}
+
+.page{
+    padding: 0px 15px;
+}
+
+.page-header{
+    padding: 15px 0 !important;
+}
+.page-title{
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+
+.box-card{
+    border: 1px solid #E6E6E6;
+    border-radius: 16px;
+    overflow: auto;
+}
+
+.mat-mdc-form-field-error-wrapper{
+    padding: 0 !important;
+}
+
+.text-align-center{
+    text-align: center !important;
+}

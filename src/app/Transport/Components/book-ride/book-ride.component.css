@@ -1,0 +1,20 @@
+mat-card{
+    height: 0 !important;
+}
+
+.book-ride{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.book-ride-action{
+    display: flex;
+}
+
+.book-ride-action-buttons{
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
