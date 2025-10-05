@@ -81,10 +81,6 @@ export class AvailableRidesComponent implements OnInit{
   public disableBookNowButton(element:any):boolean{
     return element?.[NewRideEnum.VEHICLE_SEAT] === 0 ? true : false;
   }
-
-  public test(){
-    console.log(this.dataSource.filteredData);
-    return true;
-  }
+  
 
 }
