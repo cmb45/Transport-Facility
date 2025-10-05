@@ -7,8 +7,13 @@
     <mat-card-content class="box-card">
         <div class="rides-table-heading border-bottom">
             <div class="rides-table-actions">
-                <input matInput class="rides-table-filter" placeholder="Type here to filter">
-                <button mat-raised-button color="primary" (click)="newRide()">New Ride</button>
+                <mat-select class="rides-table-filter" [formControl]="vehicleType" placeholder="Vehicle Type" (selectionChange)="onVehicleTypeChange($event.value)">
+                    <mat-option value="">None</mat-option>
+                    <mat-option value="Car">Car</mat-option>
+                    <mat-option value="Bike">Bike</mat-option>
+                </mat-select>
+                <input matInput class="rides-table-filter" [formControl]="filterSearch" placeholder="Type here to filter">
+                <button class="rides-table-newRide" mat-raised-button color="primary" (click)="newRide()">New Ride</button>
             </div>
         </div>
 
@@ -38,16 +43,16 @@
             </ng-container>
 
             <!-- Pick-Up Point -->
-            <ng-container matColumnDef="Pick-Up Point">
-                <th mat-header-cell *matHeaderCellDef> Vacant Seats </th>
+            <ng-container matColumnDef="pickUpPoint">
+                <th mat-header-cell *matHeaderCellDef> Pick-Up Point </th>
                 <td mat-cell *matCellDef="let element"> {{element.pickUpPoint}} </td>
             </ng-container>
 
             
-            <!-- Pick-Up Point -->
-            <ng-container matColumnDef="pickUpPoint">
-                <th mat-header-cell *matHeaderCellDef> Pick-Up Point </th>
-                <td mat-cell *matCellDef="let element"> {{element.pickUpPoint}} </td>
+            <!-- Time -->
+            <ng-container matColumnDef="time">
+                <th mat-header-cell *matHeaderCellDef> Time </th>
+                <td mat-cell *matCellDef="let element"> {{element.time}} </td>
             </ng-container>
 
             <!-- Destination -->
@@ -59,6 +64,11 @@
             <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
         </table>
+        <mat-paginator #paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[10, 50, 100]"
+            showFirstLastButtons>
+        </mat-paginator>
     </mat-card-content>
 </mat-card>
 

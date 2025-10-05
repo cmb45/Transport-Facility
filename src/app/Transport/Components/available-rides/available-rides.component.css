@@ -11,12 +11,17 @@
 }
 
 .rides-table-filter{
-    min-height: 30px;
+    height: 30px;
     min-width: 200px;
     border: 1px solid #e6e6e6;
     border-radius: 5px;
+    padding: 5px;
 }
 
 .border-bottom{
     border-bottom: 1px solid #e6e6e6;
+}
+
+.rides-table-newRide{
+    width: 200px;
 }

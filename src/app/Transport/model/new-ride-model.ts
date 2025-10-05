@@ -6,7 +6,8 @@ export interface NewRideInfo{
     vacantSeats: number,
     time:string,
     pickUpPoint:string,
-    destination:string
+    destination:string,
+    bookedBy?: Array<string>
 }
 
 export enum NewRideEnum{
