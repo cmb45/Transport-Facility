@@ -1,1 +1,28 @@
-<p>book-ride works!</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Enter Employee ID to confirm booking
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="book-ride">
+        <mat-form-field>
+            <mat-label>Employee ID</mat-label>
+            <input matInput  [formControl]="bookingEmployeeId" >
+        </mat-form-field>
+        <div class="book-ride-action">
+            <div class="book-ride-action-buttons">
+            <button mat-stroked-button 
+                color="primary" 
+                (click)="cancel()">
+                Cancel
+            </button>
+            <button mat-raised-button 
+                color="primary" 
+                [disabled]="!bookingEmployeeId.valid"
+                (click)="bookRide()">
+                Confirm
+            </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
