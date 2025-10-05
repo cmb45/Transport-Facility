@@ -13,11 +13,13 @@
             <div class="book-ride-action-buttons">
             <button mat-stroked-button 
                 color="primary" 
+                matTooltip="Cancel"
                 (click)="cancel()">
                 Cancel
             </button>
             <button mat-raised-button 
                 color="primary" 
+                matTooltip="Click here to book a ride"
                 [disabled]="!bookingEmployeeId.valid"
                 (click)="bookRide()">
                 Confirm

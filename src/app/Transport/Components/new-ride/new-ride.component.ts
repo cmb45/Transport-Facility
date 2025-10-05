@@ -43,9 +43,12 @@ export class NewRideComponent implements OnInit {
       alert("Employee alredy present");
     }else{
       this._transportService.addNewRide(formDetails);
-      this._router.navigate(['rides']);
+      this.redirectToDashboard();
     }
   }
 
+  public redirectToDashboard():void{
+    this._router.navigate(['rides']);
+  }
 
 }

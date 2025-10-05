@@ -13,7 +13,7 @@
                     <mat-option value="Bike">Bike</mat-option>
                 </mat-select>
                 <input matInput class="rides-table-filter" [formControl]="filterSearch" type="time">
-                <button class="rides-table-newRide" mat-raised-button color="primary" (click)="newRide()">New Ride</button>
+                <button class="rides-table-newRide" mat-raised-button color="primary" (click)="newRide()" matTooltip="Click here to Add Ride">Add Ride</button>
             </div>
         </div>
 
@@ -67,6 +67,7 @@
                 <td mat-cell *matCellDef="let element" class="text-align-center">
                     <button  mat-stroked-button 
                     color="primary" 
+                    matTooltip="Click here to book a ride"
                     [disabled]="!element?.['vacantSeats']"
                     (click)="bookRide(element)">
                     Book Ride
