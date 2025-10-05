@@ -14,8 +14,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class AvailableRidesComponent implements OnInit{
 
   public dataSource:any;
-    public displayColumns : Array<string> = Object.values(NewRideEnum);
-  // public displayColumns : Array<string> = Object.values(NewRideEnum).filter(col => col !== NewRideEnum.TIME);
+  public displayColumns : Array<string> = Object.values(NewRideEnum);
   public vehicleType = new FormControl('');
   public filterSearch = new FormControl('');
   @ViewChild('paginator', {static : true}) paginator: MatPaginator | undefined;
